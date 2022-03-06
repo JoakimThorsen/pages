@@ -18,11 +18,10 @@ The ones commonly used for redstone are these:
 6. player actions and other sheduled tasks
 
 Here is a detailed breakdown of the server tick
-## runServer()
-`net.minecraft.server.MinecraftServer.runServer`
-This is the main server loop.
 
-The main loop:
+## runServer()
+`net.minecraft.server.MinecraftServer.runServer`  
+This is the main server loop:
 - Initialize the loop
 - If the server is running, check if the server can keep up (<=50mspt), and if it can't (>50mspt) log a warning.
 - Create a new tick monitor
@@ -33,7 +32,7 @@ The main loop:
 
 If an exception occurs this loop will shut down the server and try to create and save a crash report.
 ## MinecraftServer.tick()
-`net.minecraft.server.MinecraftServer.tick`
+`net.minecraft.server.MinecraftServer.tick`  
 This method is called in `runServer()`
 ### Basic tick initialization:
 - Increase the number of ticks by one
@@ -43,8 +42,9 @@ This method is called in `runServer()`
 - Autosave if the tick number is divisible by 6000
 - Update snooper if tick number is divisible by 6000
 - Calculate length of tick in milliseconds
+- 
 ### tickWorlds()
-`net.minecraft.server.MinecraftServer.tickWorlds`
+`net.minecraft.server.MinecraftServer.tickWorlds`  
 This method is called in `MinecraftServer.tick()`
 - Call the command function manager
 - Sync world time with other dimensions every 20 ticks (1 second)
@@ -54,14 +54,18 @@ This method is called in `MinecraftServer.tick()`
 - Refresh server GUI
 
 ## ServerWorld.tick()
-`net.minecraft.server.ServerWorld.tick`
+`net.minecraft.server.ServerWorld.tick`  
 This method is called in `MinecraftServer.tickWorlds()`  
 The following actions/processes are performed during every tick:
+
 ### Tick world Border
+
 ### Weather:
 - Rain
 - Thunder
+
 ### Player sleeping
+
 ### Chunks:
 - Purge unloaded chunks
 - TACS stuff (?)
@@ -150,6 +154,7 @@ Regular entities are processed in this phase. This includes things such as:
 - Entities move
 - Entities trigger tripwire hooks
 - Entities trigger pressure plates.
+
 ### Tile entity phase
 Tile/Block entities are processed in this phase. This includes things such as:
 - Moving blocks turn into normal blocks
@@ -157,6 +162,7 @@ Tile/Block entities are processed in this phase. This includes things such as:
 - Furnaces check for items in their inventory
 - Hoppers push and pull items
 - Sculk sensors activate.
+
 ### Player inputs phase
 Player inputs are processed in this phase. This includes things such as:
 - Flipping levers
