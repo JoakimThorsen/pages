@@ -180,3 +180,11 @@ img {
     max-height: 70%;
     display: block;
 }
+
+table, th, td {
+    border: gray 1px solid;
+    border-collapse: collapse;
+}
+pre>code {
+    display: block;
+}
